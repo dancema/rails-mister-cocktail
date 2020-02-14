@@ -1,0 +1,36 @@
+<div class="container">
+    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
+        <h1><%= @cocktail.name %></h1>
+        <p class="delete-card">
+          <%= link_to cocktail_path(@cocktail), method: :delete do %>
+          <i class="fas fa-trash-alt"></i>
+          <% end %>
+        </p>
+    </div>
+
+  <h2>Ingredients</h2>
+  <ul>
+    <% @cocktail.doses.each do |dose| %>
+      <li><%= dose.ingredient.name %>: <%= dose.description %>
+        <%= link_to dose_path(dose), method: :delete do %>
+          <i class="fas fa-trash-alt"></i>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+
+  <h2>Add ingredients</h2>
+  <div class="row justify-content-center mt-3">
+    <div class="col-6">
+      <%= simple_form_for([@cocktail,@dose]) do |f| %>
+        <%= f.input :ingredient, collection: Ingredient.all - @cocktail.ingredients %>
+        <%= f.input :description %>
+        <%= f.button :submit, class: "btn btn-primary w-100"%>
+      <% end %>
+    </div>
+  </div>
+
+  <%= link_to cocktails_path do %>
+    <i class="fas fa-undo-alt"></i> Back to cocktails
+  <% end %>
+</div>

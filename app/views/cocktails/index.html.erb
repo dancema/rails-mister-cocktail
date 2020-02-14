@@ -1,0 +1,36 @@
+<div class="banner mb-3" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://drifttravel.com/wp-content/uploads/2019/02/Shangri-La-Hotel-At-The-Shard-London-Iconic-Hotel-Shot-Tower-Bridge-and-The-Shard.jpg);">
+  <div class="container">
+    <h1>Cocktails</h1>
+    <p>Les meilleurs cocktails de Londres</p>
+  </div>
+</div>
+
+
+<div class="container">
+  <div class="row mb-3">
+  <% @cocktails.each do |cocktail| %>
+    <div class="col-4">
+      <div class="card-category mb-3" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://source.unsplash.com/1600x900/?<%=cocktail.name.split(" ").join() %>)">
+        <%= link_to cocktail.name, cocktail_path(cocktail) %>
+        <p class="delete-card">
+          <%= link_to cocktail_path(cocktail), method: :delete do %>
+          <i class="fas fa-trash-alt"></i>
+          <% end %>
+        </p>
+      </div>
+    </div>
+  <% end %>
+  </div>
+
+  <h2>Add a cocktail</h2>
+
+  <div class="row justify-content-center">
+      <div class="col-6 p-0">
+        <%= simple_form_for(@cocktail) do |f| %>
+          <%= f.input :name %>
+          <%= f.submit class: "btn btn-primary"%>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
