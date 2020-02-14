@@ -11,3 +11,41 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+
+.card-category a {
+  color: #f4f4f6;
+  text-decoration: none;
+  background-color: transparent;
+
+  &:hover {
+    color: #f4f4f6;
+    text-decoration: none;
+    background-color: transparent;
+  }
+}
+
+a {
+  color: #0D0C0C;
+  text-decoration: none;
+  background-color: transparent;
+  &:hover {
+    color: #0D0C0C;
+    text-decoration: none;
+    background-color: transparent;
+  }
+}
+
+table {
+  width: 100%;
+}
+
+table td {
+  width:50px;
+  height:50px;
+}
+
+.active {
+  background-image: url('https://res.cloudinary.com/dfsmkiivp/image/upload/v1581692492/jedi_uipxgg.png');
+  background-size: cover;
+}

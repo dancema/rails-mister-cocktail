@@ -16,3 +16,32 @@
 // const imagePath = (name) => images(name, true)
 
 import 'bootstrap';
+
+
+import Typed from 'typed.js';
+
+const loadDynamicBannerText = () => {
+  new Typed('#banner-typed-text', {
+    strings: ["Well done !"],
+    typeSpeed: 100,
+    loop: true
+  });
+}
+
+let count = 0
+let oneTime = true
+document.addEventListener('keyup', (event) => {
+  if (event.key === "ArrowRight"){
+    document.getElementById('game').children[count].classList.toggle("active")
+    count += 1
+    document.getElementById('game').children[count].classList.toggle("active")
+  }
+  count = count % 15
+  if (count == 0  && oneTime === true) {
+    document.getElementById('game').children[15].classList.toggle("active")
+    document.getElementById('game').children[0].classList.toggle("active")
+    loadDynamicBannerText();
+    oneTime = false
+  }
+})
+
